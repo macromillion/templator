@@ -1,0 +1,115 @@
+[
+  {
+    "title": "AdguardHome Sync",
+    "name": "adguardhome-sync",
+    "image": "lscr.io/linuxserver/adguardhome-sync:latest",
+    "description": "AdguardHome Sync is a tool to synchronize AdGuardHome config to replica instances.",
+    "categories": [
+      "network",
+      "web"
+    ],
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "ports": [
+      "8080:8080/tcp"
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/portainer/config/adguardhome-sync"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "default": "1000",
+        "label": "PUID"
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "label": "PGID"
+      },
+      {
+        "name": "TZ",
+        "default": "America/New_York",
+        "label": "TZ"
+      },
+      {
+        "name": "CONFIGFILE",
+        "default": "/config/adguardhome-sync.yaml"
+      }
+    ],
+    "logo": "https://developer.asustor.com/uploadIcons/0020_999_1595573028_AdGuardhome_256.png",
+    "network_mode": "bridge",
+    "type": 1
+  },
+  {
+    "title": "Airsonic Advanced",
+    "name": "airsonic-advanced",
+    "image": "lscr.io/linuxserver/airsonic-advanced:latest",
+    "description": "Airsonic Advanced is a free, web-based media streamer, providing ubiquitous access to your music. Use it to share your music with friends, or to listen to your own music while at work. You can stream to multiple players simultaneously, for instance to one player in your kitchen and another in your living room.",
+    "categories": [
+      "media"
+    ],
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "ports": [
+      "4040:4040/tcp"
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/portainer/config/airsonic-advanced"
+      },
+      {
+        "container": "/music",
+        "bind": ""
+      },
+      {
+        "container": "/playlists",
+        "bind": ""
+      },
+      {
+        "container": "/podcasts",
+        "bind": ""
+      },
+      {
+        "container": "/media",
+        "bind": ""
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "default": "1000",
+        "label": "PUID"
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "label": "PGID"
+      },
+      {
+        "name": "TZ",
+        "default": "Europe/London",
+        "label": "TZ"
+      },
+      {
+        "name": "CONTEXT_PATH",
+        "default": "",
+        "label": "CONTEXT_PATH",
+        "description": "Optional"
+      },
+      {
+        "name": "JAVA_OPTS",
+        "default": "",
+        "label": "JAVA_OPTS",
+        "description": "Optional"
+      }
+    ],
+    "logo": "https://github.com/airsonic/airsonic.github.io/blob/master/favicon-200x200.png?raw=true",
+    "network_mode": "bridge",
+    "type": 1
+  }
+]
